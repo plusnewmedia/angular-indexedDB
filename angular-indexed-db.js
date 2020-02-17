@@ -325,7 +325,6 @@
               var cursor;
               if (cursor = e.target.result) {
                 results.push(mapFunc(cursor));
-                defer.notify(mapFunc(cursor));
                 return cursor["continue"]();
               } else {
                 return defer.resolve(results);
@@ -346,7 +345,6 @@
               defer.rejectWith(req);
               req.onsuccess = function(e) {
                 results.push(e.target.result);
-                defer.notify(e.target.result);
                 if (results.length >= data.length) {
                   return defer.resolve(results);
                 }

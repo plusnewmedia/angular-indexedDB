@@ -228,7 +228,6 @@ angular.module('indexedDB', []).provider '$indexedDB', ->
         req.onsuccess = (e) ->
           if cursor = e.target.result
             results.push(mapFunc(cursor))
-            defer.notify(mapFunc(cursor))
             cursor.continue()
           else
             defer.resolve(results)
@@ -242,7 +241,6 @@ angular.module('indexedDB', []).provider '$indexedDB', ->
           defer.rejectWith(req)
           req.onsuccess = (e) ->
             results.push(e.target.result)
-            defer.notify(e.target.result)
             defer.resolve(results) if results.length >= data.length
         if data.length == 0
           return $q.when([])
