@@ -19,7 +19,6 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    frameworks: ['jasmine'],
     plugins: [
       'karma-jasmine',
       'karma-coffee-preprocessor',
